@@ -31,7 +31,7 @@ int main() {
     
     //Entrada do Usuário
 
-    printf ("Digite o codigo da cidade (A01,C03...): \n");
+    printf ("Digite o codigo da cidade (A01,C03...): ");
     scanf ("%3s", codigo);  //Código
 
     printf ("\nDigite o nome da cidade (até 25 caracteres): ");
@@ -52,7 +52,7 @@ int main() {
 
         //Saida de Dados
         printf ("\n========================");
-        printf ("DADOS DA CIDADE");
+        printf ("\nDADOS DA CIDADE\n");
         printf ("========================\n");
         printf ("\nCódigo da cidade: %s.", codigo);
         printf ("\nNome da cidade: %s", nome);
