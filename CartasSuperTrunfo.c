@@ -22,32 +22,55 @@ int main() {
 
     //Criação das Variáveis 
     char codigo[4]; //Código da Cidade
-    char nome[26];  //Nome da Cidade
+    char nome[30];  //Nome da Cidade
     int populacao;  //População da Cidade
     double area;    //Area da Cidade
     double pib;     //PIB da Cidade
     int ponto_t;    //pontos turísticos 
 
+    //Novas Variáveis
+    double densidade_Populacional = 0;
+    double pib_per_capita =  0;
     
     //Entrada do Usuário
 
+    //Código
     printf ("Digite o codigo da cidade (A01,C03...): ");
-    scanf ("%3s", codigo);  //Código
+    scanf ("%3s", codigo);  
 
+    //Limpar buffer antes de fgets
+    while (getchar() != '\n');
+
+    //Nome Da Cidade
     printf ("\nDigite o nome da cidade (até 25 caracteres): ");
-    scanf  ("%25s", nome);  //Nome
-
+    fgets  (nome, sizeof(nome), stdin);  
+    
+    //População
     printf ("Digite a populaçao de %s (Habitantes): ", nome);
-    scanf ("%d", &populacao);   //População
+    scanf ("%d", &populacao);   
 
+    //Área
     printf ("\nDigite a área de %s(em km², exemplo: 1250.00): ", nome);
-    scanf ("%lf", &area);   //Área 
+    scanf ("%lf", &area);   
 
+    //PIB
     printf ("Digite o PIB de %s: (em bilhões, exemplo: 350.93)", nome);
-    scanf ("%lf",&pib); //PIB
+    scanf ("%lf",&pib);
 
+    //Pontos turísticos 
     printf ("Número de pontos turísticos em %s: ", nome);
-    scanf ("%d", &ponto_t); //Pontos turísticos 
+    scanf ("%d", &ponto_t); 
+    //Verificação e Cálculo das Propriedades
+    if (area > 0) {
+        densidade_Populacional = populacao / area;
+    } else {
+        printf("Erro: Área não pode ser zero ou negativa.\n");
+    }
+
+    if (populacao > 0) {
+        pib_per_capita = pib / populacao;
+    } else { printf ("Erro: População não pode ser zero ou negativa.\n");
+    }
 
 
         //Saida de Dados
@@ -60,6 +83,8 @@ int main() {
         printf ("\nÁrea aproximada de %s: %.2lfkm²", nome, area);
         printf ("\nPIB de %s: %.2f", nome, pib);
         printf ("\nPontos turísticos em %s: %d\n", nome , ponto_t);
+        printf ("\nDensidade populacional: %.2lf habitantes/km²\n", densidade_Populacional);
+        printf ("\nPIB per Capita: %.2lf bilhões/habitantes\n", pib_per_capita);
     
 
     return 0;
